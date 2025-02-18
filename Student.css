@@ -1,0 +1,684 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* Ensures padding and border are included in element dimensions */
+}
+
+@font-face {
+  font-family: 'NotoKufiArabic-Light';
+  src: url('fonts/NotoKufiArabic-Light.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'BalooBhaijaan2-Bold';
+  src: url('fonts/BalooBhaijaan2-Bold.ttf') format('truetype');
+}
+
+body{
+
+  background: linear-gradient(-45deg, #9EBAF3, #EEF3D2, #fc8884c0);
+  background-attachment: fixed;
+  min-height: 100vh; /* Ensures the body takes at least the full viewport height */
+  
+  display: grid; 
+  grid-template-columns: 2fr 0.3fr; 
+  gap: 10px ; 
+  grid-template-areas: 
+  "section sideBar";
+
+  position: relative;
+  font-family:NotoKufiArabic-Light, sans-serif; /* Add a default font */
+
+}
+
+
+
+
+/* section  */
+
+.section{  
+  display: grid; 
+  grid-template-rows: 0.2fr 2fr 0.4fr; 
+  grid-template-areas: 
+    "header"
+    "container"
+    "footer"; 
+  grid-area: section; 
+
+}
+
+.container{ 
+  grid-area: container;
+  margin: 20px 0 20px 20px;
+
+  }
+
+.lessons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  padding: 20px;
+  
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.2); /* شفافية الخلفية */
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* إضافة ظل */
+  padding: 15px;
+  width: 200px;
+  text-align: center;
+  transition: transform 0.3s;
+ 
+  cursor: pointer;
+  border: 1px solid #ccc;   /*check*/
+  
+}
+
+.card:hover {
+  transform: scale(1.1);
+}
+
+.card h3 {
+  margin: 0;
+  font-size: 18px;
+  color: #333;
+  font-family:'NotoKufiArabic-Light' , sans-serif; /* Use a different font for contrast */
+  font-weight: bold;
+
+}
+
+.card p {
+  margin: 5px 0 0;
+  color: #666;
+  font-size: 14px;
+  font-family:'NotoKufiArabic-Light' , sans-serif; /* Use a different font for contrast */
+
+}
+
+.title{
+  font-weight: bold;
+  font-family:'NotoKufiArabic-Light' , sans-serif; /* Use a different font for contrast */
+  text-align: start;
+  margin-right: 44px;
+  color: #0b2b6d;
+
+}
+
+.video-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:center;
+  margin-top:20px ;
+  gap: 20px
+  
+}
+
+#videoFrame{
+  height: 380px;
+  width:650px ;
+
+}
+
+@media(max-width: 1300px){
+  .video-container .lesson-info{
+    width: 90%;}
+}
+
+@media (max-width: 1024px) {
+  body {
+    display: block;
+  }
+
+  .section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sideBar {
+    display: none;
+  }
+
+  #videoFrame {
+    height: 300px;
+    width: 100%;
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .lessons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    width: 90%;
+  }
+
+  .video-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  #videoFrame {
+    height: 250px;
+  }
+
+  .lesson-info {
+    width: 95%; /* تقليل العرض قليلاً في الشاشات الصغيرة */
+    padding: 10px;
+  }
+
+  .lesson-info .lesson-content p {
+    font-size: 16px; /* تصغير الخط قليلاً للشاشات الأصغر */
+    line-height: 1.5;
+  }
+
+}
+
+@media (max-width: 480px) {
+  header {
+    font-size: 18px;
+  }
+
+  .name {
+    font-size: 30px;
+  }
+
+  .quiz {
+    width: 90%;
+    padding: 15px;
+    font-size: 18px;
+  }
+
+  .lesson-info {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .lesson-info .lesson-content {
+    text-align: right; /* تعديل النص ليكون مناسبًا للشاشات الأصغر */
+    margin-right: -5px;
+  }
+
+  .lesson-info .lesson-content p {
+    font-size: 14px;
+  }
+}
+
+.lesson-info{
+  width: 400px;
+  max-width: 1200px;
+  margin: 8px 6px; /* توسيط العنصر وإضافة هامش بسيط */
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+}
+
+.lesson-info p {
+  font-size: 18px; /* حجم خط مناسب */
+  margin-bottom: 10px;
+  margin-right: 30px;
+  margin-left: 30px;
+
+}
+
+.lesson-info h2,h3 {
+  margin-right: 15px;
+
+}
+
+.lesson-info .lesson-content {
+  display: none;
+  width: 100%;
+  text-align: justify; /* ضبط النص بحيث يكون مبرراً */
+  line-height: 1.6; /* تحسين المسافات بين الأسطر */
+}
+
+.radio{
+  display: none;
+}
+
+/* إظهار المحتوى الخاص بالكارد المختار */
+#card1:checked ~ .video-container .lesson-info #content1 {
+  display: inline-block; /* عرض المحتوى الخاص بالدرس 1 */
+}
+
+#card2:checked ~ .video-container .lesson-info #content2 {
+  display: inline-block; /* عرض المحتوى الخاص بالدرس 2 */
+}
+
+#card3:checked ~ .video-container .lesson-info #content3 {
+  display: inline-block; /* عرض المحتوى الخاص بالدرس 3 */
+}
+
+#card4:checked ~ .video-container .lesson-info #content4 {
+  display: inline-block; /* عرض المحتوى الخاص بالدرس 4 */
+}
+
+#card5:checked ~ .video-container .lesson-info #content5 {
+  display: inline-block; /* عرض المحتوى الخاص بالدرس 5 */
+}
+
+
+
+
+
+.mid{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  gap: 10px;
+  margin: 20pX;
+  padding: 20px;
+}
+.quiz{
+  cursor: pointer;
+  padding: 20px;
+  width:300px;
+  background:linear-gradient(-45deg, #9EBAF3, #EEF3D2, #fc8884c0);
+  border-radius: 15rem;
+  border: 0; /* إزالة الحدود */
+  font-family:'NotoKufiArabic-Light' , sans-serif;
+  font-size: 20px;
+  outline: none;
+  transition: all 0.2s ease-in-out; 
+}
+
+.quiz:hover{  
+  transform: scale(1.03); /* تكبير الزر عند التمرير */
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px; /* تغيير تأثير الظل */}
+
+
+.quiz:active{
+  transform: scale(0.95); /* تصغير الزر عند الضغط عليه */
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px; /* تغيير تأثير الظل عند الضغط */
+}
+
+.quiz a{
+  text-decoration: none;
+  color:#0b2b6d;
+
+}
+
+.qiuzIcon{margin-right: 10px;}
+
+.finish{
+  margin-right: 40px;
+  margin-top: 100px;
+  display: flex;
+  flex-wrap: wrap;
+  color:#0b2b6d;
+
+}
+
+.resources {
+  display: flex;
+  margin-top: -5px;
+  display: flex;
+  flex-wrap: wrap;
+ 
+}
+
+.resources label {
+  font-family:'NotoKufiArabic-Light' , sans-serif;
+  font-size: 20px;
+  margin-left: 10px; /* ترك مسافة بين الليبل ومربع الاختيار */
+  margin-top: 10px;
+}
+
+.resources select {
+  font-family:'NotoKufiArabic-Light' , sans-serif;
+  font-size: 20px;
+  padding: 10px;
+  width:300px;
+  border: none;
+  border-radius: 2rem; /* زوايا دائرية لصندوق الاختيار */
+  background-color: #fff;
+  cursor: pointer;
+}
+
+
+/* تنسيق خيارات الاختيار */
+select option {
+  color: #160851; /* تغيير لون النص داخل الخيارات */
+  border: none;
+  border-radius: 2rem; /* زوايا دائرية للخيارات */
+  background: #eef3d265; /* خلفية الخيارات */
+}
+
+/* تنسيق خيار تم اختياره أو مُركز عليه */
+select option:checked, select option:focus {
+  border: 2px #ede9fd;
+  background-color: #1f4d80cc;
+  color: #ffffff;
+}
+
+/* comment area */
+
+.comment-section {
+  margin-top: 60px;
+  margin-right: 40px;
+  width: 90%;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+}
+
+.section-title {
+  margin-bottom: 10px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.submit-btn {
+  cursor: pointer;
+  padding: 15px;
+  background-image:linear-gradient(-45deg, #9EBAF3, #EEF3D2, #fc8884c0);
+  border-radius: 15rem;
+  border: none;
+  outline: none;
+  color:#0b2b6d;
+  font-size: 20px;
+  transition: all 0.2s ease-in-out; 
+}
+
+.submit-btn:hover {
+  transform: scale(1.03); /* تكبير الزر عند التمرير */
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 23px 10px -20px; /* تغيير تأثير الظل */}
+
+.submit-btn:active{
+  transform: scale(0.95); /* تصغير الزر عند الضغط عليه */
+  box-shadow: rgba(133, 189, 215, 0.8784313725) 0px 15px 10px -10px; /* تغيير تأثير الظل عند الضغط */
+}
+.comments {
+  margin-top: 20px;
+}
+
+.comment-box {
+  background: #f1f1f1;
+  padding: 10px;
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.comment-author {
+  color: #007bff;
+  font-weight: bold;
+}
+
+/* header */
+  
+header { 
+  grid-area: header;
+  margin: 20px 0 0 20px;
+  display: flex;
+  align-items: center; /* Vertically center items in the header */
+  padding: 10px 20px; /* Add horizontal padding */
+  font-size: 22px;
+  height: 75px; 
+  border-radius: 2em;
+  background: rgba(255, 255, 255, 0.284);
+  color: #0b2b6d;
+}
+  
+.logo {
+  display: flex;
+  align-items: center; 
+}
+
+.name {
+  font-family: "Major Mono Display", monospace; /* Use monospace for better alignment */
+  font-weight: 700; /* Adjusted font weight */
+  font-size: 50px;
+  color: #0b2b6d;
+  margin: 20px;
+}
+
+.name2 {
+  font-family: BalooBhaijaan2-Bold, monospace; /* Use a different font for contrast */
+  font-weight: bold;
+  font-size: 24px;
+  color: #0b2b6d;
+  margin-top: 10px; /* Adjusted margin for better alignment */
+
+}
+
+.InputContainer {
+  width: 210px; /* عرض الحاوية */
+  height: 50px; /* ارتفاع الحاوية */
+  display: flex;
+  align-items: center; /* محاذاة المحتوى عموديًا */
+  justify-content: center; /* محاذاة المحتوى أفقيًا */
+  background: linear-gradient(to bottom, #9ebaf397, #eef3d2ae, #fc88847e); 
+  /* تدرج لوني للخلفية */
+  border-radius: 30px; /* جعل الزوايا دائرية */
+  overflow: hidden; /* منع تجاوز المحتوى للحواف */
+  cursor: pointer; /* تغيير المؤشر عند التمرير */
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.075); /* إضافة ظل خفيف للحاوية */
+  margin-right: auto;
+}
+
+.input {  /* تصميم حقل الإدخال */
+
+  width: 200px; /* عرض الحقل */
+  height: 40px; /* ارتفاع الحقل */
+  border: none; /* إزالة الحدود */
+  outline: none; /* إزالة التأثير عند التحديد */
+  caret-color: rgba(4, 1, 15, 0.783); /* لون المؤشر */
+  background-color: rgb(255, 255, 255); /* لون الخلفية */
+  border-radius: 30px; /* جعل الزوايا دائرية */
+  padding-right: 20px; /* مسافة داخلية من اليمين لمنع التصاق النص */
+  letter-spacing: 0.8px; /* تباعد الحروف */
+  color: rgb(3, 6, 34); /* لون النص */
+  font-size: 13.4px; /* حجم الخط */
+}
+
+
+  
+/* footer */
+footer { 
+  grid-area: footer;
+  background: rgba(255, 255, 255, 0.284); /* خلفية شفافة */
+  color: #0b2b6d; 
+  padding: 20px; /* تباعد داخلي */
+  text-align: center; /* توسيط النص */
+  font-size: 20px; /* حجم الخط */
+  border-radius: 2em; /* زوايا مدورة */
+  margin: 20px 0 20px 20px;
+}
+
+footer p {
+  margin: 10px 0;
+  font-family:NotoKufiArabic-Light;
+
+}
+
+footer a {
+  color: #0b2b6d; 
+  text-decoration: none; 
+}
+
+footer a:hover {
+  text-decoration: underline; 
+}
+
+
+/* side Bar */
+
+.sideBar {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  width: 70px;
+  scrollbar-width: none;
+  overflow: hidden ;
+  -ms-overflow-style: none;
+  padding: 20px;
+  backdrop-filter: blur(5px);
+  box-shadow: 8px 0px 9px 0px #00000014;
+  grid-area: sideBar;
+  border-radius: 2em;
+  background: rgba(255, 255, 255, 0.284);
+  color: #0b2b6d;
+  margin: 20px;
+  transition:  0.3s ease;
+
+}
+
+.sideBar::-webkit-scrollbar {  /* -webkit-scrollbar هي خاصية في CSS تُستخدم لتخصيص شكل شريط التمرير (Scrollbar) في المتصفحات*/
+  display: none;    /* إخفاء شريط التمرير (Scrollbar)*/
+}
+
+
+.sideBar:hover {
+  width: 160px;
+}
+
+
+.sideBar:hover li span:nth-child(2) {
+  display: block;
+}
+
+.sideBar-content li {
+  list-style: none;
+  border-radius:30px;
+  transition: .3s;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  
+}
+
+
+.sideBar-content li:hover {
+  background:#0b2b6d;
+  .icons , .text{
+    color:white;
+  }
+  
+}
+
+.sideBar-content li span:nth-child(2) {
+  display: none;
+}
+
+.l {
+  text-decoration: none;
+  color: rgb(213, 213, 213);
+  display: flex;
+  align-items: center;
+  font-size:0px ;
+}
+
+.icons{
+  padding: 10px;
+  padding-right: 5px;
+  font-size: 20px;
+  margin-left: 10px;
+  margin-right: 0px;
+  color: #0b2b6d;
+}
+
+.text{
+  font-size: 16px;
+  text-align: center;
+  color: #0b2b6d;
+}
+
+/* تنسيق صورة المستخدم واسم المستخدم */
+.user-info {
+  margin-bottom: 10px;
+  display: flex;
+  justify-items: center;
+  flex-direction: column;
+  margin-right: -5px;
+
+}
+
+.user-image {
+  width: 44px; /* أو أي حجم تود استخدامه */
+  height: 44px;
+  border-radius: 50%; /* لجعل الصورة دائرية */
+  
+}
+
+.username {
+  font-size: 15px;
+  color: #0b2b6d;
+  font-family:'NotoKufiArabic-Light' , sans-serif; /* Use a different font for contrast */  
+}
+
+
+
+/* animation */
+.name2 span {  /* تحديد تأثير التحريك لكل حرف داخل العنصر الأب .name2 */
+
+  display: inline-block; /* جعل كل حرف عنصرًا منفصلًا ليسهل تحريكه */
+  opacity: 0; /* يبدأ الحرف غير مرئي */
+  transform: translateY(20px); /* تحريك الحرف لأسفل في البداية */
+  animation: fadeBounce 3s ease-in forwards; /* تطبيق التحريك */
+}
+
+@keyframes fadeBounce {  /* تعريف حركة fadeBounce */
+
+  0% {
+      opacity: 0; /* الحرف غير مرئي */
+      transform: translateY(20px); /* بداية التحريك من الأسفل */
+  }
+  50% {
+      opacity: 1; /* يظهر الحرف تدريجيًا */
+      transform: translateY(-4px); /* يتحرك للأعلى قليلاً */
+  }
+  100% {
+      transform: translateY(0); /* يعود إلى موضعه الطبيعي */
+  }
+}
+
+/* تأخير عرض كل حرف لجعل الحروف تظهر بشكل متتابع */
+/* nth-child(n) تعني تحديد العنصر بناءً على ترتيبه داخل العنصر الأب */
+.name2 span:nth-child(1) { 
+  animation-delay: 0.1s; /* تأخير بداية التحريك للحرف الأول */
+  animation-iteration-count: infinite; /* تكرار التحريك بلا نهاية */
+}
+.name2 span:nth-child(2) { 
+  animation-delay: 0.2s; /* تأخير بداية التحريك للحرف الثاني */
+  animation-iteration-count: infinite;
+}
+.name2 span:nth-child(3) { 
+  animation-delay: 0.3s; /* تأخير بداية التحريك للحرف الثالث */
+  animation-iteration-count: infinite;
+}
+.name2 span:nth-child(4) { 
+  animation-delay: 0.4s; /* تأخير بداية التحريك للحرف الرابع */
+  animation-iteration-count: infinite;
+}
+.name2 span:nth-child(5) { 
+  animation-delay: 0.5s; /* تأخير بداية التحريك للحرف الخامس */
+  animation-iteration-count: infinite;
+}
+.name2 span:nth-child(6) { 
+  animation-delay: 0.6s; /* تأخير بداية التحريك للحرف السادس */
+  animation-iteration-count: infinite;
+}
+.name2 span:nth-child(7) { 
+  animation-delay: 0.7s; /* تأخير بداية التحريك للحرف السابع */
+  animation-iteration-count: infinite;
+}
